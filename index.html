@@ -4,10 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CCT</title>
+    <style>
+        #intro-button {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        #intro-text {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <h1>WebDev Demo</h1>
-    <p>My name is Chinamy Chranjib Tripathy.</p>
-    <p>I am a student of B.Tech., ECE 2nd year</p>
+    <button id="intro-button">Introduction</button>
+    <div id="intro-text">
+        <p>My name is Chinamy Chranjib Tripathy.</p>
+        <p>I am a student of B.Tech., ECE 2nd year</p>
+    </div>
+    <script>
+        function toggleIntro() {
+            var introText = document.getElementById("intro-text");
+            if (introText.style.display === "none") {
+                introText.style.display = "block";
+            } else {
+                introText.style.display = "none";
+            }
+        }
+    </script>
+    
 </body>
 </html>
