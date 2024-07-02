@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        /* Add some basic styling to make it look like a calculator */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        
+       .calculator {
+            width: 250px;
+            margin: 40px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+       .keys {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 10px;
+        }
+        
+       .key {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+       .key:hover {
+            background-color: #f0f0f0;
+        }
+        
+       .key:active {
+            background-color: #ccc;
+        }
+        
+        .display {
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 100%;
+            max-width: 250px;
+            height: 40px;
+            font-size: 24px;
+            text-align: right;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <form>
+            <input type="text" class="display" name="display" />
+            <div class="keys">
+                <button class="key" type="submit" name="7">7</button>
+                <button class="key" type="submit" name="8">8</button>
+                <button class="key" type="submit" name="9">9</button>
+                <button class="key" type="submit" name="/">/</button>
+                <button class="key" type="submit" name="4">4</button>
+                <button class="key" type="submit" name="5">5</button>
+                <button class="key" type="submit" name="6">6</button>
+                <button class="key" type="submit" name="*">*</button>
+                <button class="key" type="submit" name="1">1</button>
+                <button class="key" type="submit" name="2">2</button>
+                <button class="key" type="submit" name="3">3</button>
+                <button class="key" type="submit" name="-">-</button>
+                <button class="key" type="submit" name="0">0</button>
+                <button class="key" type="submit" name=".">.</button>
+                <button class="key" type="submit" name="+">+</button>
+                <button class="key" type="submit" name="=">=</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
