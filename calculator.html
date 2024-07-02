@@ -11,7 +11,7 @@
             background-color: #f0f0f0;
         }
         
-       .calculator {
+        .calculator {
             width: 250px;
             margin: 40px auto;
             padding: 20px;
@@ -20,13 +20,13 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         
-       .keys {
+        .keys {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             grid-gap: 10px;
         }
         
-       .key {
+        .key {
             background-color: #fff;
             border: 1px solid #ccc;
             padding: 10px;
@@ -34,11 +34,11 @@
             cursor: pointer;
         }
         
-       .key:hover {
+        .key:hover {
             background-color: #f0f0f0;
         }
         
-       .key:active {
+        .key:active {
             background-color: #ccc;
         }
         
@@ -52,6 +52,7 @@
             font-size: 24px;
             text-align: right;
             box-sizing: border-box;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -60,6 +61,10 @@
         <form>
             <input type="text" class="display" name="display" />
             <div class="keys">
+                <button class="key" type="submit" name="CE">CE</button>
+                <button class="key" type="submit" name="C">C</button>
+                <button class="key" type="submit" name="ON/OFF">ON/OFF</button>
+                <button class="key" type="submit" name=".">.</button>
                 <button class="key" type="submit" name="7">7</button>
                 <button class="key" type="submit" name="8">8</button>
                 <button class="key" type="submit" name="9">9</button>
@@ -71,11 +76,10 @@
                 <button class="key" type="submit" name="1">1</button>
                 <button class="key" type="submit" name="2">2</button>
                 <button class="key" type="submit" name="3">3</button>
+                <button class="key" style="grid-row: span 2;" type="submit">=</button>
                 <button class="key" type="submit" name="-">-</button>
                 <button class="key" type="submit" name="0">0</button>
-                <button class="key" type="submit" name=".">.</button>
                 <button class="key" type="submit" name="+">+</button>
-                <button class="key" type="submit" name="=">=</button>
             </div>
         </form>
     </div>
