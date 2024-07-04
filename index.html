@@ -4,10 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CCT</title>
+    <style>
+        body {
+            background-color: #1796f8; /* added this line */
+        }
+        #intro-button {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        #intro-text {
+            display: none;
+        }
+        .image-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: bisque;
+            flex-direction: column;
+        }
+        .image-container img {
+            width: 20%;
+            height: 20%;
+            margin: 20px auto;
+        }
+        .contact-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
     <h1>WebDev Demo</h1>
-    <p>My name is Chinamy Chranjib Tripathy</p>
-    <p>I am a student of BTech. ECE 2nd year</p>
+    <img src="banner.jpg" alt="Banner" style="width: 100%; height: 100px; object-fit: cover;">
+    <button id="intro-button" onclick="toggleIntro()">Introduction</button>
+    <div id="intro-text" style="font-family: Arial; font-size: 16px;">
+        <p style="background-color: aquamarine;">My name is Chinamy Chranjib Tripathy.<br> I am from Odisha, India.</p>
+        <p style="background-color: cornflowerblue;">I am a student of B.Tech., ECE, 2nd year.<br> I study in Silicon University, BBSR, Odisha, India.</p>
+    </div>
+    <div class="image-container">
+        <img src="pfpimg.jpg" alt="Image">
+        <button class="contact-button">
+            <a href="contact-us.html" target="_blank" style="text-decoration: none; color: white;">Contact Us</a>
+        </button>
+    </div>
+    <script>
+        function toggleIntro() {
+            var introText = document.getElementById("intro-text");
+            if (introText.style.display === "none") {
+                introText.style.display = "block";
+            } else {
+                introText.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
