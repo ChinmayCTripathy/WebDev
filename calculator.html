@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <style>
-        
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -90,11 +89,11 @@
 <body>
     <div class="calculator">
         <form>
-            <input type="text" class="display" name="display" />
+            <input type="text" class="display" name="display" id="display" disabled />
             <div class="keys">
                 <button class="key" type="button" name="CE">CE</button>
                 <button class="key" type="button" name="C">C</button>
-                <button class="key" type="button" style="background-color:lightcoral" name="ON/OFF">ON/OFF</button>
+                <button class="key" type="button" style="background-color: lightcoral;" name="ON/OFF">ON/OFF</button>
                 <button class="key" type="button" name=".">.</button>
                 <button class="key" type="button" name="7">7</button>
                 <button class="key" type="button" name="8">8</button>
@@ -109,10 +108,148 @@
                 <button class="key" type="button" name="3">3</button>
                 <button class="key" style="grid-row: span 2; background-color: aquamarine;" type="button">=</button>
                 <button class="key" type="button" name="-">-</button>
-                <button class="key" type="button"name="0">0</button>
+                <button class="key" type="button" name="0">0</button>
                 <button class="key" type="button" name="+">+</button>
             </div>
         </form>
     </div>
+    
+    <script>
+        const display = document.getElementById('display');
+        const keys = document.querySelectorAll('.key');
+
+        let calculator = {
+          displayValue: '',
+          firstOperand: null,
+          secondOperand: null,
+          operator: null,
+          isWaitingForSecondOperand: false,
+          isOn: false,
+        };
+
+        keys.forEach(key => {
+          key.addEventListener('click', () => {
+            handleKeyClick(key.textContent);
+          });
+        });
+
+        function handleKeyClick(keyValue) {
+          if (!calculator.isOn && keyValue !== 'ON/OFF') return;
+
+          switch (keyValue) {
+            case 'CE':
+              resetCalculator();
+              break;
+            case 'C':
+              deleteLastCharacter();
+              break;
+            case 'ON/OFF':
+              toggleCalculator();
+              break;
+            case '=':
+              calculateResult();
+              break;
+            default:
+              if (isOperator(keyValue)) {
+                handleOperator(keyValue);
+              } else {
+                handleNumber(keyValue);
+              }
+          }
+          display.value = calculator.displayValue;
+        }
+
+        function resetCalculator() {
+          calculator.displayValue = '';
+          calculator.firstOperand = null;
+          calculator.secondOperand = null;
+          calculator.operator = null;
+          calculator.isWaitingForSecondOperand = false;
+        }
+
+        function deleteLastCharacter() {
+          calculator.displayValue = calculator.displayValue.slice(0, -1);
+          if (calculator.displayValue === '') {
+            calculator.displayValue = '0';
+          }
+        }
+
+        function toggleCalculator() {
+          calculator.isOn = !calculator.isOn;
+          if (calculator.isOn) {
+            resetCalculator();
+          } else {
+            display.value = '';
+          }
+        }
+
+        function handleOperator(keyValue) {
+          const inputValue = parseFloat(calculator.displayValue);
+          
+          if (calculator.operator && calculator.isWaitingForSecondOperand) {
+            calculator.operator = keyValue;
+            return;
+          }
+
+          if (calculator.firstOperand == null && !isNaN(inputValue)) {
+            calculator.firstOperand = inputValue;
+          } else if (calculator.operator) {
+            const result = performOperation();
+            calculator.displayValue = `${parseFloat(result.toFixed(7))}`;
+            calculator.firstOperand = result;
+          }
+
+          calculator.isWaitingForSecondOperand = true;
+          calculator.operator = keyValue;
+        }
+
+        function handleNumber(keyValue) {
+          if (calculator.isWaitingForSecondOperand) {
+            calculator.displayValue = keyValue;
+            calculator.isWaitingForSecondOperand = false;
+          } else {
+            calculator.displayValue = calculator.displayValue === '0' ? keyValue : calculator.displayValue + keyValue;
+          }
+        }
+
+        function calculateResult() {
+          if (calculator.firstOperand != null && calculator.operator) {
+            const result = performOperation();
+            calculator.displayValue = `${parseFloat(result.toFixed(7))}`;
+            calculator.firstOperand = null;
+            calculator.secondOperand = null;
+            calculator.operator = null;
+            calculator.isWaitingForSecondOperand = false;
+          }
+        }
+
+        function performOperation() {
+          let result;
+          const firstOperand = calculator.firstOperand || 0;
+          const secondOperand = parseFloat(calculator.displayValue) || 0;
+
+          switch (calculator.operator) {
+            case '+':
+              result = firstOperand + secondOperand;
+              break;
+            case '-':
+              result = firstOperand - secondOperand;
+              break;
+            case '*':
+              result = firstOperand * secondOperand;
+              break;
+            case '/':
+              result = firstOperand / secondOperand;
+              break;
+            default:
+              return secondOperand;
+          }
+          return result;
+        }
+
+        function isOperator(keyValue) {
+          return keyValue === '+' || keyValue === '-' || keyValue === '*' || keyValue === '/';
+        }
+    </script>
 </body>
 </html>
