@@ -21,6 +21,13 @@
             console.log(`element = ${myArray[i]}, index = ${i}`);
         } -->
 
+        let body = document.querySelector("body");
+        let inp = document.createElement("Input");
+        inp.setAttribute("id","inp");
+        let btn = document.createElement("button");
+        btn.innerText = "click";
+        btn.addEventListener("click",push);
+        body.append(inp,btn);
     </script>
 </body>
 </html>
