@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1em;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav {
+            display: flex;
+        }
+        nav a {
+            padding: 14px 20px;
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .container {
+            padding: 20px;
+            margin-top: 80px; /* Adjusted to account for the fixed header */
+        }
+        .section {
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .data-image-pair {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 2px solid #ddd;
+        }
+        .data-image-pair:nth-child(odd) .data {
+            order: 1;
+        }
+        .data-image-pair:nth-child(odd) .image {
+            order: 2;
+        }
+        .data-image-pair:nth-child(even) .data {
+            order: 2;
+        }
+        .data-image-pair:nth-child(even) .image {
+            order: 1;
+        }
+        .data, .image {
+            flex: 1;
+            padding: 10px;
+        }
+        .data {
+            background-color: #f9f9f9;
+        }
+        .image img {
+            max-width: 100%;
+            height: auto;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form input, form textarea {
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+        }
+        form button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Blog</h1>
+        <nav>
+            <a onclick="showSection('home')">Home</a>
+            <a onclick="showSection('content')">Content</a>
+            <a onclick="showSection('contact')">Contact Us</a>
+        </nav>
+    </header>
+    <div class="container">
+        <div id="home" class="section active">
+            <h2>Welcome to My Blog</h2>
+            <p>This is an introduction and description of the blog.</p>
+        </div>
+        <div id="content" class="section">
+            <h2>Blog Content</h2>
+            <div id="dataImageContainer">
+                <!-- Data-Image pairs will be added here dynamically -->
+            </div>
+            <form id="addDataImageForm">
+                <textarea id="dataInput" placeholder="Enter data here..."></textarea>
+                <input type="file" id="imageInput" accept="image/*">
+                <button type="submit">Add Data-Image Pair</button>
+            </form>
+        </div>
+        <div id="contact" class="section">
+            <h2>Contact Us</h2>
+            <form>
+                <input type="text" name="name" placeholder="Your Name">
+                <input type="number" name="age" placeholder="Your Age">
+                <input type="email" name="email" placeholder="Your Email">
+                <textarea name="comment" placeholder="Your Comment"></textarea>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function showSection(sectionId) {
+            console.log('Showing section:', sectionId);
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+                console.log('Hiding section:', section.id);
+            });
+            document.getElementById(sectionId).classList.add('active');
+            console.log('Active section:', sectionId);
+        }
+
+        const form = document.getElementById('addDataImageForm');
+        const dataImageContainer = document.getElementById('dataImageContainer');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const data = document.getElementById('dataInput').value;
+            const imageInput = document.getElementById('imageInput');
+            const file = imageInput.files[0];
+            const reader = new FileReader();
+
+            reader.onloadend = function() {
+                const imageUrl = reader.result;
+
+                const dataImagePair = document.createElement('div');
+                dataImagePair.classList.add('data-image-pair');
+
+                const dataDiv = document.createElement('div');
+                dataDiv.classList.add('data');
+                dataDiv.textContent = data;
+
+                const imageDiv = document.createElement('div');
+                imageDiv.classList.add('image');
+                const img = document.createElement('img');
+                img.src = imageUrl;
+                imageDiv.appendChild(img);
+
+                dataImagePair.appendChild(dataDiv);
+                dataImagePair.appendChild(imageDiv);
+
+                dataImageContainer.appendChild(dataImagePair);
+                
+                // Clear the form
+                form.reset();
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
