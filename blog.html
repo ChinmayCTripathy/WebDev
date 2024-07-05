@@ -58,16 +58,26 @@
             padding: 10px;
             border: 2px solid #ddd;
         }
-        .data-image-pair .data {
+        .data-image-pair:nth-child(odd) .data {
+            order: 1; /* Text on left */
+        }
+        .data-image-pair:nth-child(odd) .image {
+            order: 2; /* Image on right */
+        }
+        .data-image-pair:nth-child(even) .data {
+            order: 2; /* Text on right */
+        }
+        .data-image-pair:nth-child(even) .image {
+            order: 1; /* Image on left */
+        }
+        .data {
             flex: 67%; /* 67% width for data */
             padding-right: 10px; /* Add some space between data and image */
             box-sizing: border-box; /* Include padding in width calculation */
-        }
-        .data-image-pair .image {
-            flex: 33%; /* 33% width for image */
-        }
-        .data {
             background-color: #f9f9f9;
+        }
+        .image {
+            flex: 33%; /* 33% width for image */
         }
         .image img {
             max-width: 100%;
@@ -193,13 +203,18 @@
         // Function to initialize existing data-image pairs
         function initializeDataImagePairs() {
             const initialPairs = [
-                { data: 'The Taj Mahal is an ivory-white marble mausoleum on the south bank of the Yamuna river in the Indian city of Agra. It was commissioned in 1631 by the Mughal emperor, Shah Jahan, to house the tomb of his favorite wife, Mumtaz Mahal. The tomb is the centerpiece of a 17-hectare (42-acre) complex, which includes a mosque and a guest house, and is set in formal gardens bounded on three sides by a crenellated wall.', imageUrl: 'taj.jpg' }
+                { data: 'The Taj Mahal is an ivory-white marble mausoleum on the south bank of the Yamuna river in the Indian city of Agra. It was commissioned in 1631 by the Mughal emperor, Shah Jahan, to house the tomb of his favorite wife, Mumtaz Mahal. The tomb is the centerpiece of a 17-hectare (42-acre) complex, which includes a mosque and a guest house, and is set in formal gardens bounded on three sides by a crenellated wall.', imageUrl: 'taj.jpg' },
                 // Add more initial pairs as needed
             ];
 
-            initialPairs.forEach(pair => {
+            initialPairs.forEach((pair, index) => {
                 const dataImagePair = document.createElement('div');
                 dataImagePair.classList.add('data-image-pair');
+                if (index % 2 === 0) {
+                    dataImagePair.classList.add('odd');
+                } else {
+                    dataImagePair.classList.add('even');
+                }
 
                 const dataDiv = document.createElement('div');
                 dataDiv.classList.add('data');
