@@ -7,10 +7,17 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
         nav a {
             margin: 10px;
             text-decoration: none;
+            color: #5a189a;
+        }
+        nav {
+            background: #eee;
+            padding: 10px;
         }
         .container {
             width: 80%;
@@ -23,9 +30,32 @@
             border: 1px solid #ddd;
             padding: 10px;
             margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between; /* Adjusted to space between items */
+            align-items: center;
         }
         .product-item img {
             max-width: 100px;
+            margin-right: 10px;
+            margin-left: 10px; /* Added margin for centering on larger screens */
+        }
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 0 10px;
+            }
+            nav a {
+                display: block;
+                margin: 5px 0;
+            }
+            .product-item {
+                flex-direction: column;
+                align-items: center; /* Center items on smaller screens */
+                text-align: center; /* Center text on smaller screens */
+            }
+            .product-item img {
+                margin: 10px 0; /* Adjust margin for smaller screens */
+            }
         }
     </style>
 </head>
