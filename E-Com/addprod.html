@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        nav a {
+            margin: 10px;
+            text-decoration: none;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .product-list {
+            margin-top: 20px;
+        }
+        .product-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .product-item img {
+            max-width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="addProd.html">Add</a>
+        <a href="homePage.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="signUp.html">Sign Up</a>
+    </nav>
+
+    <div class="container">
+        <h1>Add Product</h1>
+        <form id="addProductForm">
+            <div class="form-group">
+                <input type="text" placeholder="Name of Product" id="productName">
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Image URL of Product" id="productImage">
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Price of Product (₹)" id="productPrice">
+            </div>
+            <button type="button" onclick="addProduct()">Add Product</button>
+        </form>
+        <div class="product-list" id="productList"></div>
+    </div>
+
+    <script>
+        function addProduct() {
+            const productName = document.getElementById('productName').value;
+            const productImage = document.getElementById('productImage').value;
+            const productPrice = document.getElementById('productPrice').value;
+
+            if (productName && productImage && productPrice) {
+                const product = { productName, productImage, productPrice };
+                const products = JSON.parse(localStorage.getItem('products')) || [];
+                products.push(product);
+                localStorage.setItem('products', JSON.stringify(products));
+                displayProducts();
+                document.getElementById('addProductForm').reset();
+            } else {
+                alert("Please fill out all fields.");
+            }
+        }
+
+        function displayProducts() {
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+            const productList = document.getElementById('productList');
+            productList.innerHTML = '';
+            products.forEach((product, index) => {
+                const productItem = document.createElement('div');
+                productItem.className = 'product-item';
+                productItem.innerHTML = `
+                    <h2>${product.productName}</h2>
+                    <img src="${product.productImage}" alt="${product.productName}">
+                    <p>Price: ₹${product.productPrice}</p>
+                    <button onclick="deleteProduct(${index})">Delete</button>
+                    <button onclick="editProduct(${index})">Edit</button>
+                `;
+                productList.appendChild(productItem);
+            });
+        }
+
+        function deleteProduct(index) {
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+            products.splice(index, 1);
+            localStorage.setItem('products', JSON.stringify(products));
+            displayProducts();
+        }
+
+        function editProduct(index) {
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+            const product = products[index];
+            document.getElementById('productName').value = product.productName;
+            document.getElementById('productImage').value = product.productImage;
+            document.getElementById('productPrice').value = product.productPrice;
+            products.splice(index, 1);
+            localStorage.setItem('products', JSON.stringify(products));
+            displayProducts();
+        }
+
+        document.addEventListener('DOMContentLoaded', displayProducts);
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        nav a {
+            margin: 10px;
+            text-decoration: none;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        .product-list {
+            margin-top: 20px;
+        }
+        .product-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .product-item img {
+            max-width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="addProd.html">Add</a>
+        <a href="homePage.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="signUp.html">Sign Up</a>
+    </nav>
+
+    <div class="container">
+        <h1>Home</h1>
+        <div class="product-list" id="productList"></div>
+    </div>
+
+    <script>
+        function displayProducts() {
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+            const productList = document.getElementById('productList');
+            productList.innerHTML = '';
+            products.forEach((product) => {
+                const productItem = document.createElement('div');
+                productItem.className = 'product-item';
+                productItem.innerHTML = `
+                    <h2>${product.productName}</h2>
+                    <img src="${product.productImage}" alt="${product.productName}">
+                    <p>Price: ₹${product.productPrice}</p>
+                `;
+                productList.appendChild(productItem);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', displayProducts);
+    </script>
+</body>
+</html>

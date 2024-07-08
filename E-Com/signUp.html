@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        nav a {
+            margin: 10px;
+            text-decoration: none;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .form-group .half-width {
+            width: 48%;
+            display: inline-block;
+            margin-right: 4%;
+        }
+        .form-group .half-width:last-child {
+            margin-right: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="addProd.html">Add</a>
+        <a href="homePage.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="signUp.html">Sign Up</a>
+    </nav>
+
+    <div class="container">
+        <h1>Create a New Account</h1>
+        <form id="signUpForm">
+            <div class="form-group">
+                <input type="text" id="firstName" placeholder="First name" class="half-width">
+                <input type="text" id="lastName" placeholder="Last name" class="half-width">
+            </div>
+            <div class="form-group">
+                <input type="text" id="userName" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <input type="password" id="pass" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <input type="password" id="confirmPass" placeholder="Confirm password">
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob">
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender">
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" id="pinCode" placeholder="Pin Code">
+            </div>
+            <button type="button" onclick="signUp()">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        function signUp() {
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const userName = document.getElementById('userName').value;
+            const pass = document.getElementById('pass').value;
+            const confirmPass = document.getElementById('confirmPass').value;
+            const dob = document.getElementById('dob').value;
+            const gender = document.getElementById('gender').value;
+            const pinCode = document.getElementById('pinCode').value;
+
+            if (pass !== confirmPass) {
+                alert('Passwords do not match');
+                return;
+            }
+
+            const signUpData = JSON.parse(localStorage.getItem('signUpArr')) || [];
+            let flag = false;
+
+            signUpData.forEach(user => {
+                if (user.userName === userName) {
+                    flag = true;
+                    alert('User already exists');
+                }
+            });
+
+            if (!flag) {
+                const newUser = { firstName, lastName, userName, pass, dob, gender, pinCode };
+                signUpData.push(newUser);
+                localStorage.setItem('signUpArr', JSON.stringify(signUpData));
+                alert('Sign Up successful');
+                window.location.href = 'login.html';
+            }
+        }
+    </script>
+</body>
+</html>

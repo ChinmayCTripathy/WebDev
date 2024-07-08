@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        nav a {
+            margin: 10px;
+            text-decoration: none;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="addProd.html">Add</a>
+        <a href="homePage.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="signUp.html">Sign Up</a>
+    </nav>
+
+    <div class="container">
+        <h1>Login</h1>
+        <form>
+            <input type="text" id="userName" placeholder="Username">
+            <input type="password" id="pass" placeholder="Password">
+            <button type="button" onclick="login()">Login</button>
+        </form>
+    </div>
+
+    <script>
+        function login() {
+            const userName = document.getElementById('userName').value;
+            const pass = document.getElementById('pass').value;
+            const signUpData = JSON.parse(localStorage.getItem('signUpArr')) || [];
+            let flag = false;
+
+            signUpData.forEach(user => {
+                if (user.userName === userName && user.pass === pass) {
+                    flag = true;
+                }
+            });
+
+            if (flag) {
+                alert('Login successful');
+                window.location.href = 'homePage.html';
+            } else {
+                alert('Login failed');
+            }
+        }
+    </script>
+</body>
+</html>
