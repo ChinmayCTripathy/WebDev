@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Signup({ onSignup }) {
   const [firstName, setFirstName] = useState('');
@@ -47,7 +48,7 @@ function Signup({ onSignup }) {
         required
       />
       <button type="submit">Sign Up</button>
-      <button type="button" onClick={() => onSignup(false)}>Login</button>
+      <Link to="/login">Login</Link>
     </form>
   );
 }

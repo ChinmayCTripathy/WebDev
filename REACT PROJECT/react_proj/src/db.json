@@ -1,4 +1,36 @@
 {
-    "products": [],
-    "users" : []
+  "products": [
+    {
+      "id": 1,
+      "productName": "iPad",
+      "productImage": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSxdPQu8bh5xQjaMO5ecZCjNxRq6sC7zSFaTSV5DLfxj-51p5L1Vss_dNe0XownUt7vu6r8GTE0v8x93GjBuQRb85370CCvxbJPLzXZPxnS3q6S8drKZ4c-D7m2h7fbUfwhPShZQQ&usqp=CAc",
+      "productPrice": "39900"
+    },
+    {
+      "id": 2,
+      "productName": "iPad Air",
+      "productImage": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRcDOJ9_CdcNJOtksvEI0-M1iRBCJ7tOmvwpiWZTpZhRdPnvcV19IM743TULwpiWY58oKhudWo_ZKUblF6wmP3ncutFqIonubg-XL-MS5yv9JC-OqL2FtFB4x5C_M8gexMmWs3iMb0&usqp=CAc",
+      "productPrice": "59900"
+    },
+    {
+      "id": "c335",
+      "productName": "ipad",
+      "productImage": "data:image/webp;base64,UklGRnwKAABXRUJQVlA4IHAKAAAwNgCdASqOAI4APlEgjUQjoiEW6k7EOAUEsjYiK/JvlKP33ncWl/J/hf5MMATxx9j/YerT89f8X3AP04/0H9A6/n9S9B385/wn7Ce8d+N3u1/4XqGf3T/Adb36Dv8A/0Hpyfs58OX7gf9j/e+17dIdsPxL/R9C71wduO1h/g8lx+vekROJ/JyaPrM/6PmT+suBePxM/pIoyAtlDputK6YsZSbMmDxqI8EY3Y4mo/YGJXQ8ya1LIXePNeT0PQ1wYu+K0J1+Mf1u0JvO6c0Ei8NvhUB2fSIjOpFOjpA0SfDC2DhOPgdcRu1hpEzGv9nHFQW/qMEz79LyVT3++yaNMnacwkBv/R7ciw98nLSnIRVcqY6pjnQ+14iIOjg2iW8TvOo6eqXF/LUlWlF9VXrveSPuP8I5RtT9PLMyKZ2azN5h6/EBxR97S8OieXidB1KnrPjOsZNjl87JXJZUHKBN3M5QdMpjk34BmloF8D6oaSHQRnyL6b9yokmHII8HbEQo9yuNCUeUzzUo43Q1hWKbYuM8h6HpAPvzkVuUe/guDIAjcQWJD+e2X/1yDnsG2z9ub4r/0xrHFPDMXsAAAP7/MtAaN26ZGgr/Ike8ulffm3Dzgi1AvqNNuTm6FjyikrMDopjUUknrv9wxnfLxD714W/J3u9YESdSzdLmD+AQhEap1C2dz9+OSuH8UE4mc1YHtxkx/p+3bWBpXQNHpyrNJfy+Xr/qXnwfimtU6epKcMRtxvNci6SDcpuf07Pl509s8jvV2JwOJ3nKloZhXTL/e66wzlVq3r7x/Bjz13CZBo877VpQspbQeENq06v+uKae1t0Sqi+tQZlQgmrXcyErHssP8FrIvr0JozCEvr5sToR/K+CcyzzmEA7NPl4xkxZ7cdixy8PPAD6f4D6ZJt06/1oZoZ/qT0bQliu62iwjr+Fb8G13nw2fBnxVoa8Gtw7B1QcMs4IZuWI13we5+9ag5+3+VIx3374E2fq/l5T133ozM9n3B+SQuYHTiSuO2n2Ar7PgesC854qyMx3lVpXF5ovcj/wdZSvVudOSEeXLecV6rqPFNrbbEG7gj5xF5tvJbQoZySAQm0lUB7pizxMWLUi9Mp1dzF1a51SsCdtbxzQkfnZO2bszQlajL2/MOKnyPGgqW8b94JCTsOu3UYpa9tyJCinJkHUB7Jq7gKLiVzQRD8rZjTibnDFNjqR3Xkd0diEZQSO0RQbSgdu106Rd4VnlpCkPEAe0vegDIP09HMI2y7K57Ly8Id+gM00RH6zxgGcZNVHI/4NbRsfJCClimMu4cCVe8id3iycIxg1wmMIdAajjMw+amUMyVWbAi3dspM+pYsbcrFuJsIJWIc9TthtvtIH29jD+wM2p5LgKHwAYHy0y3utLT+3ae0fRldyZzeX1q8eTkVh9vNPKllX0UUs62DMVnO49+P+E3MoVGVeL0loFmT+3n4BAexfQ4BN4T842I1EBQV4V5ycdk+jSvc1CEuacYXi3wXfERe/UcTBLqAg/9RNrK4O6mr+Btn1oHoWiHTZA7vi3Mt263zfyOUYKfA5jDYf6lMRuyeu50SpaFMiDSb87XPYEt2v4gl1xuNngNx+Fr6MRADZh8x3uRgRBhgvuKCkPVz4Btb8zsPUPQ/IjBCnxoYozWSsvwJJ+YYecSLNV17qUSyl3pHCUgxOXILYRDmXHMtCq1wBAjh0qEE73O0DJ+HnHzKGN/cKcceT+oEnpH06YQuRi/6y/yjBGx3WQh3z1ujN/yV2ek0Qp2XN5+btdgkM/1BEPJREW7sSCWLDFWDhSkRDVa92Jk3T1WkTy6uex+JtDb2l7zLgGOP4ycwmONT3UiZUmyxWFuKqSL3Yq+s5c3fb9TV4bOxGftPhOsLcthPrd9J4nrvtuZmOKOz4/Kq9/JjeusvNtR8+ahfA4BklEKADMIaai93AyaxHTnntRrgwGd8LlSj8C4Qhz82DCjPt08DXYOlcE0THyrKcB5jsmF4do0qiji6TOFAP/TMdMLagi2Wn9I6lRcffQeyT/xrsW6d9ij7PjuxWlhHvTSwiANUgOUMgeYSI8dcb9qGPvqbUAfTtRe17yLzYAIYMqJHeLNACMWi+l6fiDC4IXfAvy4z7oKOYycxNBcUDanxYajWBKtxUjEibF3F3VK+nlfmuXgPIUL1IFl3bkxejcibYDVgP7L5i9XHNddf250kZ+ebUC0K+gl99EwlI3xOBwfmtCyz8ud0TnSYemQ680Ox3GUqB1qnTL/W2tWmLq7qXe9nsEreHakwu4AHAuhr9SzAqxphef9v/JVmxenaP39lM2o9DWTIMeFb8SV1/GH4esToXFNdKl3ub0xH1GUcIiGkmGgRP9bI6ft8yLfsJDp600dY+L4NAQGLCJtTjtRNURMkq0X1qiOCYrLKqlI68D9/fUO2zWBHOEjTefKHFt1gH/6BZOPyatcLnJytGBS6WSomA6sbqVvvVMqOO4Tsb4V7FEsPavxqCl7j5cpb8n5g7oiNdreQU7jCXTM2P0kJh2bD1VC2Vf5V8sWhCX1tZhvqgA/MPviQb6xHWSS4PSJLYQ1gVYfX5IIYz0XyHj4QI+8tqPz7dafG44eDcMOjHfESRUq2HG2CAqtBlHv3aNTmSeXwgNt3wCfIKt7R/A0UVbkVeEIKs6P4LMZb0+faUiTLd98HHfVOaKroxv1n4jlaB0k2WAwSN8yBBb/zJHYGtk/giYC8l4+1E8LO8V+PzmxicoxAJwsOJRcro3yRPiSy2UK+pv2J5geD9Im0aDrvLgTCOtbh8rXCtm+Ol3f3jgs/5PY9Y3p1N+wrTZdvc9TMeoPZE3+ATI2XMJ6PiQjelzopUwm2tewEZ1rcgRLhWL1HCVOOL0+3JmBpgLM/AmkrSx5kW7TL5Mpni6PBxZUlzs0JpbpaVOglWNOphDXehmyrB/D1Hw8qMM+8NRZQJPq3epflUefYvfq2sjOSxEA364CNy3SH7+Bsw7ZT/voHNFQO2nP+HGQ3sYfiBrpBpisZEHoTDPXSaed8txcYWP3zQm/7bkErSDNz3zrhvdcHzx3hPFoEZ+ivMB178Ir0ESr4/Ptmnmv+VenZrqwGVbYwoabW+EYDryBYKaNg4gI40b9IqGlH1+vQBKkYIaEF1m48doTDjnfxtbgDJFR/yVOjhe66ozUPvYAferb2lBjYCD2LGmJb5Li2mSNqzq4jP6WKNZFW2Xk0jODLs/F3JTZBCdnfuUXfOmx9iEuOc462Z1fOa3jLJ/MIYrJ4Jtrm13rb/T+r74wxbofOCorlhOgLJOuDcz3mslj6Y3qkUy33bnfPlUz2tUvXKWM71i0akrwG6ITcN9hmSFAAhqq3oVzVyOYcRbdY9qQyJud+v3HP8obr92X/KaALos/ETnAa9ao6MNmXJa/fiLYO9dWGsi86FszQzeCIJefQw77T5laOShSZaVw9aNcl/ZOyC3mqh1UjSruCH6OZotDNjcjg519QyHu2tTCsZLqpWFK9yXdzs+ydJCsj6Wzx+cor98xmqh6M1defgzt2k/pZzJDE5SGphIvacp8bBcbzwAAAA==",
+      "productPrice": "39900"
+    }
+  ],
+  "users": [
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "john.doe@example.com",
+      "password": "password123"
+    },
+    {
+      "firstName": "Jane",
+      "lastName": "Smith",
+      "email": "jane.smith@example.com",
+      "password": "password456"
+    }
+  ]
 }
